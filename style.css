@@ -1,0 +1,476 @@
+html,body,div,span,iframe,h1,h2,h3,h4,p,pre,del,em,img,b,i,dl,dt,dd,ol,ul,li,form,table,tbody,tr,th,td,article,aside,footer,header,nav,section{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;box-sizing:border-box}
+article,aside,footer,header,nav,section{display:block}
+body{line-height:1;overflow-wrap:break-word;word-wrap:break-word}
+input,textarea,select{font-family:inherit;font-size:inherit;color:inherit;vertical-align:middle;box-sizing:border-box}
+a{margin:0;padding:0;text-decoration:none;outline:none;font-size:100%;vertical-align:baseline;background:transparent}
+a img{border-style:none}
+ul,li{list-style-type:none}
+hr{border:0;display:block;margin:1em 0;padding:0;height:1px}
+.cf:before,.cf:after{content:" ";display:table}.cf:after{clear:both}
+
+/* ===================================
+背景,文字,リンク設定
+=================================== */
+@font-face {
+    font-family: 'Ishmeria';
+    src: url('fonts/JF-Dot-jiskan24.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {
+    font-size: 62.5%;
+    height: 100%;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-size: 1.0em;
+    font-family: 'Ishmeria', sans-serif;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-align: center;
+    height: 100%;
+}
+
+h1, h2, h3, nav, #fl {
+    font-family: 'Ishmeria', sans-serif;
+    color: #b3b3b3;
+    letter-spacing: 3px;
+}
+------------------------------ */
+a{
+color:inherit
+}
+#rightcolumn a,aside a{
+color:#801a33;
+display:inline-block;
+margin:3px 3px 3px 0;
+position:relative
+}
+#rightcolumn a::after,aside a::after{
+background-color:#801a33;
+position:absolute;
+content:'';
+bottom:0;left:0;
+width:0;
+height:1px
+}
+#rightcolumn a:hover::after,aside a:hover::after{
+width:100%;
+transition:.3s
+}
+nav li a:hover,nav li span:hover{
+background:#801a33;
+border-radius:5px
+}
+#rightcolumn a.bg-none::after,aside a.bg-none::after{
+display:none
+}
+
+/* ===================================
+基本
+=================================== */
+
+#wrapper{
+background:#000; /* 右側の背景 */
+color:#fff;/* 文字色 */
+position:relative;
+text-align:left;
+min-height:100%
+}
+header{
+padding:0 80px 0 20px;
+position:absolute;
+left:0;
+width:350px; /* (※1)と同じ */
+z-index:10
+}
+#header-inner{
+background: rgba(0, 0, 0, 0.0);
+border-radius:0 0 10px 10px;
+padding:10px;
+text-align:center
+}
+#rightcolumn-wrap{ 
+float:right;
+margin-left:-350px; /* (※1)と同じだけマイナス */
+width:100%
+}
+#rightcolumn{
+margin-left:350px; /* (※1)と同じ */
+padding:20px 20px 20px 35px;
+position:relative
+}
+#leftcolumn-wrap{
+background-image:url(),url(images/darkbrick.png);
+background-repeat:repeat-y,repeat;
+background-position:100% 0,0 0;
+float:left;
+padding:0 80px 3em 20px;
+width:350px; /* 左側の幅(※1) */
+}
+#leftcolumn{
+padding:0 0 50px
+}
+aside{
+background: rgba(0, 0, 0, 0.4);
+border-radius:10px;
+padding:10px
+}
+
+/* ===================================
+メニュー
+=================================== */
+
+#menu{
+background: rgba(0, 0, 0, 0.5);
+border-radius:10px;
+display:block;
+margin:20px 0;
+padding:10px
+}
+nav li a,nav li span{
+display:block;
+margin:5px 0;
+padding:5px 0;
+position:relative
+}
+.sub-menu{
+display:none;
+margin:0;
+overflow:hidden
+}
+.sub-menu li{
+text-indent:1em
+}
+/*  メニューの「>」
+------------------------------ */
+nav li span:after{
+border-top:3px solid #fff; /* 色 */
+border-right:3px solid #fff; /* 色 */
+content:"";
+display:block;
+margin-top:-3px;
+position:absolute;
+height:5px;width:5px;
+top:50%;right:15px;
+-ms-transform:rotate(45deg);
+-webkit-transform:rotate(45deg);
+transform:rotate(45deg);
+transition:.5s
+}
+nav li span.open:after{
+-ms-transform:rotate(135deg);
+-webkit-transform:rotate(135deg);
+transform:rotate(135deg)
+}
+/*  メニューを開くボタン非表示
+------------------------------ */
+#open{display:none}
+
+/* ===================================
+ページ上部へのリンク、著作権表示
+=================================== */
+
+#pagetop{
+background:rgba(128,26,51,.8);/* 背景 */
+border-radius:30px;
+box-sizing:border-box;
+color:#fff;/* 色 */
+display:block;
+font-size:13px;
+letter-spacing:normal;
+line-height:20px;
+padding-top:12px;
+position:fixed;
+text-align:center;
+height:40px;width:40px; /* 大きさ */
+bottom:-80px;
+z-index:10
+}
+#pagetop:before{
+content:"";
+display:block;
+border-left:2px solid #fff;
+border-top:2px solid #fff;
+position:absolute;
+top:10px;left:16px;
+height:6px;width:6px;
+-ms-transform:rotate(45deg);
+-webkit-transform:rotate(45deg);
+transform:rotate(45deg)
+}
+#pagetop:hover{
+background:rgba(128,26,51,.5)
+}
+#fl{
+background:#000;
+border-radius:5px;
+display:block;
+margin:20px 0;
+position:absolute;
+text-align:center;
+bottom:0;left:20px;
+width:250px; /* (※1)-100 */
+}
+
+/* ===================================
+index
+=================================== */
+#index {
+  background: #000 url();
+  color: #fff;
+  height: auto;
+  min-height: inherit;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.indexbox {
+  background: #000 url() repeat-y 100% 0;
+  border-radius: 5px;
+  margin: 0 auto;
+  padding: 20px 40px 20px 20px;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+  
+}
+
+/* ===================================
+見出し、枠、線
+=================================== */
+
+h1{
+color:#d8d8d8;
+font-size:1.7em;
+margin:0 0 10px
+}
+h2{
+border-bottom:3px double #801a33;
+color:#a51e1e;
+font-size:1.0em;
+line-height:30px;
+margin:.5em 0
+}
+#rightcolumn h2{
+background:url() no-repeat 0 0;
+margin:20px 0 20px -15px;
+padding:0 0 0 25px
+}
+#rightcolumn h2:first-child{
+margin-top:0
+}
+h3{
+border-bottom:1px dashed #801a33;
+font-size:1.2em;
+margin:15px 0;
+padding:2px 0
+}
+dt{
+background:#801a33;
+border-radius:5px;
+clear:both;
+float:left;
+font-weight:700;
+margin:0 0 5px;
+padding:0 5px;
+width:12em /* 文字数によっては調整 */
+}
+dd{
+border-bottom:1px dotted #999;
+margin:0 0 5px 14em /* dtのwidthに2足してます */
+}
+em{
+font-style:normal;
+font-weight:700
+}
+input,textarea{
+background:#000;
+border:1px solid;
+margin:3px 0;
+width:200px
+}
+#leftcolumn input,#leftcolumn textarea{
+width:100%
+}
+textarea{
+height:50px
+}
+hr{
+border-top:1px solid #ccc
+}
+.marker{
+background:#924343;
+background:-webkit-linear-gradient(rgba(128,26,51,0) 50%, #801a33 0%);
+background:linear-gradient(rgba(128,26,51,0) 50%, #801a33 0%);
+padding:1px 5px
+}
+.dcline{
+border-left:8px solid #924343;
+margin:8px 0;
+padding:3px 3px 3px 10px
+}
+.textbox{
+border:1px solid #924343;
+border-radius:5px;
+margin:10px 0;
+padding:3px;
+text-align:center
+}
+.title{
+color:#924343;
+font-size:1.5em;
+font-weight:700;
+margin:2em 0
+}
+
+/*  複数行の右寄せ
+------------------------------ */
+.r-justified{
+text-align:right
+}
+.r-justified p{
+display:inline-block;
+text-align:left
+}
+.inline{
+display:inline-block
+}
+
+/* ===================================
+横幅800pxで切り替え
+=================================== */
+
+@media screen and (max-width: 800px){
+dt{float:none;clear:none}
+dd{margin-left:20px}
+input,textarea{width:100%}
+img{max-width:100%;height:auto} /* 画像の縮小表示 */
+}
+
+/* ===================================
+スマホ、タブレット用
+横幅600pxで切り替え
+=================================== */
+
+@media screen and (max-width: 600px){
+body{
+background:#000;
+font-size:1.5em
+}
+#wrapper{
+background:#000 url(starry-night.gif);
+padding:0 0 70px
+}
+header{
+background:url(starry-night.gif) repeat-x 0 0
+}
+#header-inner{
+background:none;
+color:#000;
+padding:10px 15px 20px;
+min-height:60px; /* メニューを開くボタン分 */
+margin-right:60px; /* メニューを開くボタン分 */
+text-align:left
+}
+#rightcolumn-wrap{
+padding:15px
+}
+#rightcolumn{
+background:#000 url(image/back03.gif) repeat-y 100% 0;
+border-radius:10px;
+padding:20px 40px 20px 30px
+}
+#leftcolumn{
+padding:0 10px
+}
+#fl{
+margin-top:50px;
+position:static;
+width:100%;
+}
+h1{
+font-size:1.2em
+}
+#rightcolumn h2{
+margin:20px -10px
+}
+body{height:auto}
+#wrapper{min-height:inherit}
+header{padding:0;position:relative;width:auto;z-index:auto}
+#rightcolumn-wrap{float:none;margin-left:0}
+#rightcolumn{margin-left:0}
+#leftcolumn-wrap{float:none}
+#rightcolumn a::after,aside a::after{display:none}
+
+/* ===================================
+スマホ、タブレット用メニュー
+=================================== */
+
+/*  スライド
+------------------------------ */
+#leftcolumn-wrap{
+background:#000;
+border:0;
+line-height:2;
+padding:80px 10px 20px; /* メニューボタン分空ける */
+position:fixed;
+height:100%;width:280px; /* (*1)同じにする */
+top:0;right:0;
+-ms-transform:translate(280px); /* (*1)同じにする */
+-webkit-transform:translate(280px); /* (*1)同じにする */
+transform:translate(280px); /* (*1)同じにする */
+transition:.3s;
+z-index:1000
+}
+#side-bg{
+background:rgba(51,51,51,.5)/* 周りの背景色 */
+}
+
+/*  メニュー
+------------------------------ */
+nav li{
+border-bottom:1px solid #222
+}
+.sub-menu li:first-child{
+border-top:1px solid #222
+}
+.sub-menu li:last-child{
+border-bottom:0
+}
+/*  メニューを開くボタン
+------------------------------ */
+#open{
+background:#000;
+border:1px solid #000;
+border-radius:3px;
+color:#fff; /* 文字色 */
+display:inline-block;
+position:absolute;
+text-align:center;
+height:50px;width:50px; /* 大きさ */
+top:15px;right:15px;
+z-index:1001
+}
+#open-icon,#open-icon:before,#open-icon:after{
+background:#fff /* 線の色 */ 
+}
+#leftcolumn{height:100%;overflow:auto;-webkit-overflow-scrolling:touch}
+#leftcolumn-wrap.open{-ms-transform:translate(0);-webkit-transform:translate(0);transform:translate(0)}
+#side-bg{display:none;position:fixed;height:100%;width:100%;top:0;left:0;z-index:999;cursor:pointer}
+#open.buttonclose{position:fixed}
+.open-text{font-size:10px;position:absolute;bottom:0;left:0;width:100%}
+#open-icon{display:block;margin:-1px 0 0 -10px;position:absolute;top:16px;left:50%;height:2px;width:20px}
+#open-icon:before,#open-icon:after{content:"";display:block;position:absolute;top:50%;left:0;height:2px;width:20px;transition:.3s}
+#open-icon:before{margin-top:-8px}
+#open-icon:after{margin-top:6px}
+#open .close{background:transparent}
+#open .close:before,#open .close:after{margin-top:0}
+#open .close:before{-ms-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg)}
+#open .close:after{-ms-transform:rotate(-135deg);-webkit-transform:rotate(-135deg);transform:rotate(-135deg)}
+}

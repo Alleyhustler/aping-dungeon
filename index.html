@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aping Dungeon</title>
+	<link rel="canonical" href="https://nymphblood.neocities.org" />
+<link rel="stylesheet" href="style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Linden+Hill" rel="stylesheet">
+</head>
+<body id="index">
+<style>
+@font-face {
+    font-family: 'Times';
+    src: url('fonts/JF-Dot-jiskan24.ttf') format('woff2'),
+         url('boudoir/UnknownTimesNewRoman19PixelBitmapFontTestFont.ttf') format('woff');
+    /* Add more font formats if needed for cross-browser compatibility */
+    font-weight: normal;
+    font-style: normal;
+}
+.second-font {
+    font-family: 'Times', sans-serif;
+}
+body {
+    font-family: 'Times', sans-serif;
+}
+      .indexbox .index a {
+    color: #9e1540; /* Your desired text color */
+}
+.indexbox .index a,
+.indexbox .index a:visited,
+.indexbox .index a:hover,
+.indexbox .index a:active {
+    color: #9e1540; /* Your desired text color */
+}
+@font-face {
+    font-family: 'Chemre';
+    src: url('fonts/Chemre.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1.index {
+    font-family: 'Chemre', sans-serif;
+    font-size: 50px; /* Adjust the size as needed */
+    color: #9e1540; /* Match your desired text color */
+}
+    </style>
+<div class="indexbox">
+ <h1 class="index"><a href="castlemain.html">Aping Dungeon</a></h1></div>
+  <style>
+        /* Define a style for the main heading */
+        h1 {
+            font-size: 24px; /* Adjust the font size to your preference */
+            font-family: 'MingLiU-ExtB', sans-serif;
+        }
+    </style>
+      <div class="test-wrap">
+<div class="wave-text">open the gates below... use desktop</div></div>
+<br>
+ <div class="test-wrap">
+<div class="wave-text"> 私のダンジョンへようこそ。</div></div>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    .enter-link {
+       font-size: 20px;
+       color: #9e1540;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+ .test-wrap {
+      padding: 0rem;
+      max-width: 520px;
+      margin: auto;
+    }
+    .wave-text {
+    }
+    .letter-wrap {
+      position: relative;
+      top: 0;
+      left: 0;
+      font-size: 1.2rem;
+      color: #fff;
+      line-height: 1.8rem;
+    }
+    .enter-link img {https://nymphblood.neocities.org/bf9729e6e61b4e0a53a97b779f46626739bbcd4b.gif
+      width: 300px;
+      height: 300px;
+      margin-bottom: 10px; /* Adjust as needed */
+    }
+  </style>
+  <title>dimension portal</title>
+  <a href="castlemain.html" class="enter-link">
+    <img src="image.png" alt="banner">
+    ENTER
+  </a>
+      <audio id="backgroundAudio" loop autoplay>
+        <source src="sound files/micolash.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+    <script>
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('backgroundAudio');
+            audio.volume = 0.3;  // Set the desired volume
+            audio.play().catch(function(error) {
+                console.log('Audio playback prevented:', error);
+                // If autoplay is blocked, you can show a message or button for user to click to play audio.
+            });
+        });
+    </script>
+</html>
+</div>
+<script src="jquery-3.6.4.min.js"></script>
+<script>
+class WaveText{
+	constructor(selector, run = true){
+		console.log("WaveText!", selector);
+		this.letters = [];
+		let _this = this;
+		this.sineId = 0;
+		this.phaseProgress = 0.1;
+		$(selector).each( (i, el) => {
+			let 
+				$el = $(el),
+				$output = $el.text().split('').reduce( (prevLetter, letter, letterI) => {
+					let $outputEl = $(`<span class="letter-wrap">${letter}</span>`);
+					_this.letters.push({
+						mag:0,
+						id:_this.letters.length,
+						$el:$outputEl,
+						maxMag:Math.random() * 38 + 8
+					});
+					return prevLetter.append($outputEl);
+				}, $(`<div class="wrap"></div>`))
+			;
+			$el.empty().append($output);
+		});
+		if(run === true) this.run();
+	}
+	run(){
+		console.log("WaveText.run...");
+		this.runIntervalId = setInterval( () => {
+			// console.log('run:'+this.sineId);
+			this.letters.forEach( (obj, i) => {
+				obj.mag = Math.min(obj.mag += 0.005, obj.maxMag);
+				let 
+					rad = this.sineId +i*this.phaseProgress,
+					cos = Math.cos(rad),
+					sin = Math.sin(rad)
+					// opacity = 1 - .35*(1 + sin)
+			;
+				obj.$el.css({
+					left:obj.mag *cos,
+					top:1.5 * obj.mag *sin,
+					opacity:1 - .45*(1 + sin) *(obj.mag / obj.maxMag)
+				});
+			});
+			this.sineId += .085;
+		},30);
+	}
+}
+var wave0 = new WaveText('.wave-text', true);
+</script>
+</html>
